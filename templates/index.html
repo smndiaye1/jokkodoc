@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="language-selector-container" style="text-align: right; padding: 10px;">
+        <label for="languageSelector">Language: </label>
+        <select id="languageSelector">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="wo">Wolof</option>
+        </select>
+    </div>
+    <div id="chat-container">
+        <div id="static-disclaimer" class="static-disclaimer-banner">
+            {/* Disclaimer text will be populated by JavaScript */}
+        </div>
+        <div id="chatbox">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div id="input-area">
+            <input type="text" id="userInput" placeholder="Type your symptoms...">
+            <button id="sendButton">Send</button>
+            <button id="recordButton">🎤</button>
+        </div>
+        <div id="recording-status" style="text-align: center; margin-top: 5px; font-size: 0.9em; color: #555;">
+            {/* Recording status will be shown here */}
+        </div>
+    </div>
+    <button onclick="speakText('Hello, this is a test.', 'en-US')">Test TTS</button> <!-- Temporary Test Button -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

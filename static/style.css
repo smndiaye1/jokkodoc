@@ -1,0 +1,111 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* To stack language selector above chat */
+}
+
+#language-selector-container { /* Style for the language selector's container */
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #e9e9eb;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#chat-container {
+    width: 400px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.static-disclaimer-banner {
+    padding: 8px 15px;
+    background-color: #f0f0f0; /* Light grey, distinct but not jarring */
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.85em;
+    color: #555;
+    line-height: 1.3;
+}
+
+#chatbox {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #eee;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 18px;
+    line-height: 1.4;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto; /* Aligns to the right */
+}
+
+.ai-message {
+    background-color: #e9e9eb;
+    color: #333;
+    align-self: flex-start;
+    margin-right: auto; /* Aligns to the left */
+}
+
+#input-area {
+    display: flex;
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+#sendButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#sendButton:hover {
+    background-color: #0056b3;
+}
+
+/* For message alignment within chatbox if needed */
+#chatbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.ai-error {
+    background-color: #ffdddd; /* Light red background */
+    color: #d8000c; /* Dark red text */
+    align-self: flex-start;
+    margin-right: auto; /* Aligns to the left */
+    border: 1px solid #d8000c;
+}
