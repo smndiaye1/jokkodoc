@@ -61,18 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update button texts
         document.getElementById('sendButton').textContent = strings.sendButtonText;
         // recordButton might just be an icon, but if it had text:
-        // document.getElementById('recordButton').textContent = strings.recordButtonText; 
+        // document.getElementById('recordButton').textContent = strings.recordButtonText;
 
         // Update input placeholder
         document.getElementById('userInput').placeholder = strings.userInputPlaceholder;
-        
+
         // Update chat AI name (if displayed dynamically, for now it's part of system prompt)
         // This could be used if we prepend "AI:" to messages, for example.
 
         // Update static text if any (e.g. title, labels)
         // Example: document.querySelector('label[for="languageSelector"]').textContent = strings.languageSelectorLabel;
         // The actual label is outside the script's direct control here, but good practice for other elements.
-        
+
         // Update recording status default text (if we reset to a default)
         // recordingStatus.textContent = strings.recordingStatusDefault; // Or handle this in STT logic
 
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             console.log("STT language set to: " + recognition.lang);
         }
-        
+
         // Update static disclaimer text
         const staticDisclaimerDiv = document.getElementById('static-disclaimer');
         if (staticDisclaimerDiv) {
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Text-to-Speech (TTS) Functionality ---
-    // Note: The first definition of sendMessage and its event listeners were removed 
+    // Note: The first definition of sendMessage and its event listeners were removed
     // as they were superseded by the more complete one below, which includes language features.
 
     // Check for browser support for Web Speech API
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         utterance.lang = ttsLang;
         console.log("TTS language set to: " + utterance.lang);
-        
+
         // Optional: Select a specific voice if needed, after voices are loaded
         // speechSynthesis.getVoices().forEach(voice => console.log(voice.name, voice.lang)); // Log voices
         // utterance.onstart = () => { // Ensure voices are loaded
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //         console.warn("No specific voice found for " + ttsLang + ". Using default.");
         //     }
         // };
-        
+
         speechSynthesis.speak(utterance);
     }
 
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     interimTranscript += event.results[i][0].transcript;
                 }
             }
-            
+
             userInput.value = finalTranscript + interimTranscript; // Show interim results, will be finalized
 
             if (finalTranscript) {
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             recordButton.textContent = uiStrings[currentLanguage].recordButtonText; // Reset button icon/text
             recordButton.disabled = false; // Re-enable button
-            
+
             // Automatically clear status after a few seconds, only if it's a "finished" or "error" message
             const currentStatus = recordingStatus.textContent;
             const finishedMsg = uiStrings[currentLanguage].recordingStatusFinished;
@@ -329,8 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // This can happen if recognition is already started and not yet ended.
                     console.warn("Recognition already active or could not start: ", e);
                     // Use a generic message or a translated one if available for this specific case
-                    recordingStatus.textContent = "Processing previous audio, please wait."; 
-                     setTimeout(() => { 
+                    recordingStatus.textContent = "Processing previous audio, please wait.";
+                     setTimeout(() => {
                         if (recordingStatus.textContent === "Processing previous audio, please wait.") {
                             recordingStatus.textContent = uiStrings[currentLanguage].recordingStatusDefault || '';
                         }
